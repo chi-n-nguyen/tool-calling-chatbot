@@ -6,7 +6,7 @@
 
 **For AI @ DSCubed Winter Program 2025**
 
-A project I built to make my winter break meaningful - learning function calling with OpenAI while building tools around my actual interests (food & vintage fashion). Started as Project 1 requirements but evolved into something more personal.
+A project I built to make my winter break meaningful - learning function calling with OpenAI while building tools around my actual interests (vintage fashion & food). Started as Project 1 requirements but evolved into something more personal.
 
 Built a modular command-line AI assistant that integrates with OpenAI's GPT-4o-mini, featuring three distinct function calling patterns that showcase different use cases.
 

@@ -20,7 +20,9 @@ class VintageOutfitGenerator(BaseTool):
         "vintage dickies work shirt in navy or khaki",
         "oversized graphic tee from local narrm venues",
         "grunge-style cropped cardigan over slip dress",
-        "vintage patagonia fleece in earth tones"
+        "vintage patagonia fleece in earth tones",
+        "thrifted band hoodie from corner hotel merch",
+        "oversized thermal long sleeve under vintage tee"
     ]
     
     GRUNGE_BOTTOMS = [
@@ -35,22 +37,33 @@ class VintageOutfitGenerator(BaseTool):
         "carpenter jeans with tool loops",
         "loose fitting chinos in earth tones",
         "vintage ski pants for that 90s grunge vibe",
-        "baggy shorts with long socks for warmer days"
+        "baggy shorts with long socks for warmer days",
+        "wide leg dickies with carabiner keychain hanging"
     ]
     
-    GRUNGE_ACCESSORIES = [
+    NARRM_GRUNGE_ACCESSORIES = [
         "chunky doc martens 1460s in black or brown",
-        "vintage carhartt beanie in brown or olive",
+        "vintage carhartt beanie (small, slouchy fit)",
         "oversized silver chain or choker",
         "thrifted leather jacket (essential grunge piece)",
-        "canvas messenger bag or jansport backpack",
+        "crumpler bag (classic narrm messenger style)",
         "vintage band pins on jacket or bag",
         "chunky silver rings and layered bracelets",
         "stussy bucket hat or dad cap",
         "vintage sunglasses with thick frames",
-        "layered vintage band tees as accessories",
+        "canvas tote bag with band patches",
         "oversized flannel tied around waist",
-        "vintage work gloves as styling piece"
+        "vintage work gloves as styling piece",
+        "small carhartt beanie in earth tones",
+        "carabiner clipped to belt loop with keys",
+        "vintage crumpler sling bag in faded colours",
+        "canvas tote from polyester records or basement discs",
+        "matcha green reusable coffee cup (narrm cafe culture)",
+        "small leather crossbody bag with vintage pins",
+        "fisherman beanie in charcoal or olive",
+        "carabiner clip with vintage keyring collection",
+        "crumpler camera bag for that photographer aesthetic",
+        "canvas messenger bag with patches and pins"
     ]
     
     NARRM_GRUNGE_SPOTS = [
@@ -63,7 +76,9 @@ class VintageOutfitGenerator(BaseTool):
         "vintage depot brunswick (90s streetwear focus)",
         "retro star vintage stores (band tees and flannels)",
         "greville street thrift stores (carhartt and dickies)",
-        "smith street vintage shops (authentic 90s pieces)"
+        "smith street vintage shops (authentic 90s pieces)",
+        "crumpler store melbourne central (for new bags)",
+        "polyester records fitzroy (band merch and patches)"
     ]
     
     @property
@@ -72,7 +87,7 @@ class VintageOutfitGenerator(BaseTool):
     
     @property
     def description(self) -> str:
-        return "generates grunge core vintage narrm outfits with carhartt, stussy, and authentic 90s streetwear vibes"
+        return "generates grunge core vintage narrm outfits with carhartt, stussy, crumpler bags, and authentic melbourne streetwear vibes"
     
     @property
     def parameters(self) -> List[ToolParameter]:
@@ -97,20 +112,20 @@ class VintageOutfitGenerator(BaseTool):
         """get seasonal modifications for narrm grunge weather."""
         modifications = {
             "summer": {
-                "extra_items": ["vintage band tee", "baggy cargo shorts", "canvas sneakers or docs"],
-                "note": "narrm summer grunge: oversized tees and baggy shorts, but keep that carhartt beanie for the vibe"
+                "extra_items": ["vintage band tee", "baggy cargo shorts", "canvas sneakers", "canvas tote with patches"],
+                "note": "narrm summer grunge: oversized tees, baggy shorts, crumpler sling bag, and that matcha in hand for cafe culture vibes"
             },
             "autumn": {
-                "extra_items": ["carhartt flannel", "chunky doc martens", "vintage windbreaker"],
-                "note": "perfect grunge layering season in narrm - flannel over band tee is essential"
+                "extra_items": ["carhartt flannel", "chunky doc martens", "small carhartt beanie", "crumpler messenger bag"],
+                "note": "perfect grunge layering season in narrm - flannel over band tee with carabiner keys and crumpler bag essential"
             },
             "winter": {
-                "extra_items": ["carhartt detroit jacket", "chunky knit beanie", "heavyweight docs"],
-                "note": "narrm winter grunge: serious layering with carhartt workwear and vintage flannels"
+                "extra_items": ["carhartt detroit jacket", "chunky knit beanie", "heavyweight docs", "crossbody bag"],
+                "note": "narrm winter grunge: serious layering with carhartt workwear, small slouchy beanie, and carabiner aesthetic"
             },
             "spring": {
-                "extra_items": ["light vintage hoodie", "stussy long sleeve", "canvas high tops"],
-                "note": "classic narrm unpredictable weather - layer that stussy piece under a flannel"
+                "extra_items": ["light vintage hoodie", "stussy long sleeve", "canvas high tops", "vintage tote bag"],
+                "note": "classic narrm unpredictable weather - layer that stussy piece, carabiner on belt, matcha ready for cafe hopping"
             }
         }
         return modifications.get(season, modifications["autumn"])
@@ -121,7 +136,7 @@ class VintageOutfitGenerator(BaseTool):
             # select random grunge pieces for the outfit
             top = random.choice(self.GRUNGE_TOPS)
             bottom = random.choice(self.GRUNGE_BOTTOMS)
-            accessories = random.sample(self.GRUNGE_ACCESSORIES, 2)
+            accessories = random.sample(self.NARRM_GRUNGE_ACCESSORIES, 3)  # increased to 3 for more narrm vibe
             shopping_spot = random.choice(self.NARRM_GRUNGE_SPOTS)
             
             # get seasonal modifications
@@ -140,9 +155,10 @@ where to shop: {shopping_spot}
 
 styling note: {seasonal_mods['note']}
 
-grunge tip: authentic carhartt and stussy pieces at savers are gems - 
-check multiple locations and don't sleep on dickies workwear for that proper 90s vibe.
-the key is oversized silhouettes and earth tones, mate.
+narrm grunge tip: authentic carhartt and stussy pieces at savers are gems, 
+but don't forget the crumpler bag - it's peak narrm street cred. 
+carabiner on the belt loop, small beanie (not too big), and matcha in hand 
+complete the narrm grunge aesthetic. oversized silhouettes and earth tones, mate.
             """.strip()
             
             return ToolResult(

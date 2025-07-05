@@ -1,30 +1,57 @@
 # 🤖 AI Tool Calling Chatbot
 
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![OpenAI GPT-4o-mini](https://img.shields.io/badge/OpenAI-GPT--4o--mini-green.svg)](https://openai.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A modular command-line AI assistant that integrates with OpenAI's GPT-4o-mini model, featuring an extensible tool system for function calling.
+
+## 🎬 Demo
+
+> **Note**: Add a demo GIF or video here to showcase the chatbot in action!
+
+```bash
+# Example interaction
+$ chatbot
+
+🤖 AI Tool Calling Chatbot
+
+You: Calculate the area of a circle with radius 5
+🔧 Tool Call: calculator(expression=3.14159 * 5 * 5)
+✅ Result: 78.54
+🤖 Assistant: The area of a circle with radius 5 is approximately 78.54 square units.
+
+You: Tell me a programming joke
+🔧 Tool Call: random_joke(category=programming)
+✅ Result: Why do programmers prefer dark mode? Because light attracts bugs! 😄
+🤖 Assistant: Here's a programming joke for you: Why do programmers prefer dark mode? Because light attracts bugs! 😄
+```
 
 ## ✨ Features
 
 - **🔧 Function Calling**: AI can automatically call predefined tools based on user requests
-- **📊 Calculator**: Safe mathematical expression evaluation
-- **📁 File Reader**: Read text files with safety checks
-- **😄 Random Jokes**: Get programming and general jokes
-- **🎨 Rich CLI**: Beautiful terminal interface with colors and formatting
-- **🔄 Async Support**: Efficient asynchronous operations
-- **📝 Conversation History**: Maintain chat context across interactions
-- **🛡️ Type Safety**: Comprehensive type hints throughout the codebase
+- **📊 Calculator**: Safe mathematical expression evaluation with AST parsing
+- **📁 File Reader**: Read text files with comprehensive safety checks
+- **😄 Random Jokes**: Get programming and general jokes for entertainment
+- **🎨 Rich CLI**: Beautiful terminal interface with colors, animations, and formatting
+- **🔄 Async Support**: Efficient asynchronous operations with concurrent tool execution
+- **📝 Conversation History**: Maintain chat context across interactions with persistent memory
+- **🛡️ Type Safety**: Comprehensive type hints throughout the codebase using modern Python typing
+- **🔐 Security**: Input validation, safe code execution, and error handling
 
 ## 🚀 Quick Start
 
 ### 1. Prerequisites
 
 - Python 3.11 or higher
-- OpenAI API key
+- OpenAI API key ([Get one here](https://platform.openai.com/api-keys))
+- [uv](https://docs.astral.sh/uv/) for package management
 
 ### 2. Installation
 
 ```bash
 # Clone the repository
-git clone <your-repo-url>
+git clone https://github.com/chi-n-nguyen/tool-calling-chatbot.git
 cd tool-calling-chatbot
 
 # Install dependencies using uv
@@ -48,20 +75,23 @@ OPENAI_API_KEY=your_openai_api_key_here
 
 ### 4. Get Your OpenAI API Key
 
-1. Visit [OpenAI's website](https://platform.openai.com/)
+1. Visit [OpenAI's API Keys page](https://platform.openai.com/api-keys)
 2. Sign up or log in to your account
-3. Navigate to API Keys section
-4. Create a new API key
-5. Copy the key to your `.env` file
+3. Click "Create new secret key"
+4. Copy the key and paste it into your `.env` file
+5. **Important**: Add some credits to your OpenAI account to use the API
 
 ### 5. Run the Chatbot
 
 ```bash
-# Run using the installed command
+# Method 1: Using the installed command
 chatbot
 
-# Or run directly with Python
+# Method 2: Using Python directly  
 python -m tool_calling_chatbot.main
+
+# Method 3: For development
+uv run python -m tool_calling_chatbot.main
 ```
 
 ## 🎯 Usage Examples

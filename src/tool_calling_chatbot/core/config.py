@@ -13,7 +13,7 @@ class Config:
     
     openai_api_key: str
     model: str = "gpt-4o-mini"
-    temperature: float = 1.2
+    temperature: float = 1.6
     max_tokens: int = 1000
     
     @classmethod
@@ -31,7 +31,7 @@ class Config:
         return cls(
             openai_api_key=api_key,
             model=os.getenv("OPENAI_MODEL", "gpt-4o-mini"),
-            temperature=float(os.getenv("OPENAI_TEMPERATURE", "1.2")),
+            temperature=float(os.getenv("OPENAI_TEMPERATURE", "1.6")),
             max_tokens=int(os.getenv("OPENAI_MAX_TOKENS", "1000")),
         )
     

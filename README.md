@@ -1,199 +1,163 @@
-# 🤍 ai tool calling chatbot
+# 🤖 Tool Calling Chatbot
 
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![OpenAI GPT-4o-mini](https://img.shields.io/badge/OpenAI-GPT--4o--mini-green.svg)](https://openai.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-a modular command-line ai assistant that integrates with openai's gpt-4o-mini model, featuring an extensible tool system for function calling.
+**For AI @ DSCubed Winter Program 2025**
 
-## 🤍 demo
+A project I built to make my winter break meaningful - learning function calling with OpenAI while building tools around my actual interests. Started as Project 1 requirements but evolved into something more personal.
+
+Built a modular command-line AI assistant that integrates with OpenAI's GPT-4o-mini, featuring three distinct function calling patterns that showcase different use cases.
+
+## 🎯 Function Calling Patterns
+
+This project demonstrates three different function calling approaches:
+
+**Tool 1: Calculator** 📊 
+- *Required by Project 1* - Safe mathematical expression evaluation
+- Pattern: Direct computation with validation and error handling
+- Showcases: AST parsing, security considerations, structured output
+
+**Tool 2: Vintage Outfit Generator** 🧥
+- *Personal choice* - My interest in fashion and Narrm's vintage scene  
+- Pattern: Combinatorial generation with contextual logic
+- Showcases: Random selection, seasonal adaptation, local knowledge integration
+
+**Tool 3: Narrm Food Recommender** 🍜
+- *Personal choice* - Being a bit of a foodie in Melbourne
+- Pattern: Filtering and recommendation with multi-criteria logic
+- Showcases: Complex parameter handling, data filtering, personalized results
+
+## 🚀 Quick Demo
 
 ```bash
-# example interaction
 $ chatbot
 
-🤍 ai tool calling chatbot
+🤖 AI Tool Calling Chatbot
 
-you: calculate the area of a circle with radius 5
-🤍 tool call: calculator(expression=3.14159 * 5 * 5)
-🤍 result: 78.54
-🤍 assistant: the area of a circle with radius 5 is approximately 78.54 square units.
+You: Calculate the compound interest on $1000 at 5% for 3 years
+🔧 Tool Call: calculator(expression=1000 * (1 + 0.05)**3)
+📊 Result: $1157.63
 
-you: generate a vintage outfit for a concert in winter
-🤍 tool call: vintage_outfit_generator(occasion=concert, season=winter)
-🤍 result: vintage narrm core outfit with band tee, leather jacket, and doc martens
-🤍 assistant: here's a perfect vintage narrm outfit for a winter concert...
+You: Generate a vintage outfit for a concert in winter
+🎨 Tool Call: vintage_outfit_generator(occasion=concert, season=winter)
+🧥 Result: Oversized band tee, vintage leather jacket, Doc Martens...
 
-you: recommend a cheap restaurant for students
-🤍 tool call: narrm_food_recommender(budget=cheap, student=true)
-🤍 result: dumplings plus on bourke street with student discount
-🤍 assistant: i recommend dumplings plus on bourke street - great value and student discount available.
+You: Recommend a cheap restaurant for students
+🍴 Tool Call: narrm_food_recommender(budget=cheap, student=true)
+🍜 Result: Dumplings Plus - handmade dumplings, $8-12, student discount available
 ```
 
-## 🤍 features
+## ✨ Features
 
-- **function calling** 🤍 ai can automatically call predefined tools based on user requests
-- **calculator** 🤍 safe mathematical expression evaluation with ast parsing
-- **vintage outfit generator** 🤎 narrm-focused vintage outfit recommendations
-- **narrm food recommender** 🤍 local restaurant suggestions with student discounts
-- **rich cli** 🤍 beautiful terminal interface with colors and formatting
-- **async support** 🤍 efficient asynchronous operations with concurrent tool execution
-- **conversation history** 🤍 maintain chat context across interactions with persistent memory
-- **type safety** 🤍 comprehensive type hints throughout the codebase using modern python typing
-- **security** 🤍 input validation, safe code execution, and error handling
+- **Smart Function Calling** - AI automatically selects the right tool for your request
+- **Security First** - Safe code execution with AST parsing for calculations
+- **Local Knowledge** - Narrm-focused recommendations with real local spots
+- **Rich CLI** - Beautiful terminal interface with proper styling
+- **Async Operations** - Efficient concurrent tool execution
+- **Type Safety** - Comprehensive type hints throughout
+- **Conversation Memory** - Maintains context across interactions
 
-## 🤍 quick start
+## 🛠️ Setup
 
-### 1. prerequisites
-
-- python 3.11 or higher
-- openai api key ([get one here](https://platform.openai.com/api-keys))
+### Prerequisites
+- Python 3.11+
+- OpenAI API key ([grab one here](https://platform.openai.com/api-keys))
 - [uv](https://docs.astral.sh/uv/) for package management
 
-### 2. installation
-
+### Installation
 ```bash
-# clone the repository
 git clone https://github.com/chi-n-nguyen/tool-calling-chatbot.git
 cd tool-calling-chatbot
 
-# install dependencies using uv
+# Install dependencies
 uv sync
 
-# install the package in development mode
+# Install in development mode
 uv pip install -e .
 ```
 
-### 3. configuration
-
-create a `.env` file in the project root:
-
+### Configuration
 ```bash
-# copy the example environment file
+# Copy example environment file
 cp .env.example .env
 
-# edit the .env file with your api key
-OPENAI_API_KEY=your_openai_api_key_here
+# Add your OpenAI API key
+echo "OPENAI_API_KEY=your_key_here" >> .env
 ```
 
-### 4. get your openai api key
+**Pro tip**: Add some credits to your OpenAI account before testing!
 
-1. visit [openai's api keys page](https://platform.openai.com/api-keys)
-2. sign up or log in to your account
-3. click "create new secret key"
-4. copy the key and paste it into your `.env` file
-5. **important** 🤍 add some credits to your openai account to use the api
-
-### 5. run the chatbot
-
+### Run It
 ```bash
-# method 1: using the installed command
+# Simple way
 chatbot
 
-# method 2: using python directly  
+# Or directly
 python -m tool_calling_chatbot.main
 
-# method 3: for development
+# Development mode
 uv run python -m tool_calling_chatbot.main
 ```
 
-## 🤍 usage examples
+## 🎮 Usage Examples
 
-### calculator tool
+### 📊 Calculator Tool
 ```
-you: calculate 2 + 3 * 4
-assistant: i'll calculate that for you.
-🤍 tool call: calculator(expression=2 + 3 * 4)
-🤍 result: {'expression': '2 + 3 * 4', 'result': 14, 'formatted': '2 + 3 * 4 = 14'}
-the result is 14.
-```
-
-### vintage outfit generator
-```
-you: generate a vintage narrm outfit for a date in autumn
-assistant: i'll create a vintage narrm outfit for your autumn date.
-🤍 tool call: vintage_outfit_generator(occasion=date, season=autumn)
-🤍 result: vintage outfit with curated narrm shopping spots
-here's a perfect vintage narrm outfit for your autumn date...
+You: What's the area of a circle with radius 7?
+Assistant: I'll calculate that for you.
+🔧 Tool Call: calculator(expression=3.14159 * 7 * 7)
+📊 Result: 153.94 square units
 ```
 
-### narrm food recommender
+### 🧥 Vintage Outfit Generator
 ```
-you: recommend a good restaurant for students on a budget
-assistant: i'll find a great budget-friendly restaurant with student options.
-🤍 tool call: narrm_food_recommender(budget=cheap, student=true)
-🤍 result: student-friendly restaurant recommendation with discount info
-i recommend checking out these student-friendly spots in narrm...
+You: I need a vintage Narrm outfit for a date night in autumn
+Assistant: Perfect! Let me create a vintage Narrm outfit for your autumn date.
+🎨 Tool Call: vintage_outfit_generator(occasion=date, season=autumn)
+Result: Vintage outfit with curated Narrm shopping spots and seasonal tips
 ```
 
-## 🤍 available commands
+### 🍜 Narrm Food Recommender
+```
+You: Find me a good spot for lunch under $20
+Assistant: I'll find you a great lunch spot within budget.
+🍴 Tool Call: narrm_food_recommender(budget=moderate, cuisine=any)
+Result: Pellegrini's Espresso Bar - authentic Italian since 1954, $6-15
+```
 
-| command | description |
-|---------|-------------|
-| `/help` | show help message |
-| `/tools` | list available tools |
-| `/history` | show conversation history |
-| `/clear` | clear conversation history |
-| `/exit` or `/quit` | exit the chatbot |
+## 🎯 Available Tools
 
-## 🤍 available tools
+| Tool | Function | Purpose |
+|------|----------|---------|
+| 📊 Calculator | `calculator` | Mathematical expression evaluation |
+| 🧥 Vintage Generator | `vintage_outfit_generator` | Narrm-focused vintage outfit recommendations |
+| 🍜 Food Recommender | `narrm_food_recommender` | Local restaurant suggestions with student discounts |
 
-### calculator
-- **function** 🤍 `calculator`
-- **description** 🤍 evaluates mathematical expressions safely
-- **parameters** 🤍 `expression` (string) - mathematical expression to evaluate
-- **example** 🤍 `"2 + 3 * 4"`, `"pow(2, 3)"`, `"abs(-5)"`
-
-### vintage outfit generator
-- **function** 🤍 `vintage_outfit_generator`
-- **description** 🤎 generates vintage narrm core outfit recommendations
-- **parameters** 🤍 
-  - `occasion` (string, optional) - occasion for the outfit
-  - `season` (string, optional) - narrm season for appropriate layering
-- **supported occasions** 🤍 casual, concert, date, uni, work, weekend
-- **supported seasons** 🤍 summer, autumn, winter, spring
-
-### narrm food recommender
-- **function** 🤍 `narrm_food_recommender`
-- **description** 🤍 recommends narrm restaurants based on budget and preferences
-- **parameters** 🤍 
-  - `budget` (string, optional) - budget preference for dining
-  - `cuisine` (string, optional) - preferred cuisine type
-  - `student` (boolean, optional) - whether user is a student seeking discounts
-
-## 🤍 project structure
+## 🏗️ Project Structure
 
 ```
 tool-calling-chatbot/
-├── src/
-│   └── tool_calling_chatbot/
-│       ├── __init__.py
-│       ├── main.py              # main entry point
-│       ├── core/
-│       │   ├── __init__.py
-│       │   ├── config.py        # configuration management
-│       │   ├── base.py          # base classes and registry
-│       │   ├── openai_client.py # openai integration
-│       │   └── cli.py           # cli interface
-│       └── tools/
-│           ├── __init__.py
-│           ├── calculator.py    # calculator tool
-│           ├── vintage_outfit_generator.py # outfit generator
-│           └── narrm_food_recommender.py # food recommender
-├── pyproject.toml              # project configuration
-├── .env.example               # environment template
-├── .gitignore                # git ignore rules
-└── README.md                 # this file
+├── src/tool_calling_chatbot/
+│   ├── core/
+│   │   ├── config.py           # Environment configuration
+│   │   ├── base.py             # Base classes and registry
+│   │   ├── openai_client.py    # OpenAI integration
+│   │   └── cli.py              # CLI interface
+│   ├── tools/
+│   │   ├── calculator.py       # Mathematical calculations
+│   │   ├── vintage_outfit_generator.py  # Fashion recommendations
+│   │   └── narrm_food_recommender.py   # Food recommendations
+│   └── main.py                 # Entry point
+├── pyproject.toml             # Project configuration
+└── .env.example              # Environment template
 ```
 
-## 🤍 development guide
+## 🔧 Adding New Tools
 
-### adding new tools
-
-1. **create a new tool file** 🤍 in `src/tool_calling_chatbot/tools/`:
-
+1. **Create Your Tool**
 ```python
-from typing import Any, List
 from ..core.base import BaseTool, ToolParameter, ToolResult
 
 class YourTool(BaseTool):
@@ -203,103 +167,53 @@ class YourTool(BaseTool):
     
     @property
     def description(self) -> str:
-        return "description of what your tool does"
+        return "What your tool does"
     
-    @property
-    def parameters(self) -> List[ToolParameter]:
-        return [
-            ToolParameter(
-                name="param_name",
-                type="string",
-                description="parameter description",
-                required=True
-            )
-        ]
-    
-    async def execute(self, param_name: str) -> ToolResult:
-        # your tool logic here
-        return ToolResult(
-            success=True,
-            data={"result": "your_result"}
-        )
+    async def execute(self, **kwargs) -> ToolResult:
+        # Your logic here
+        return ToolResult(success=True, data={"result": "success"})
 ```
 
-2. **register the tool** 🤍 in `src/tool_calling_chatbot/tools/__init__.py`:
-
+2. **Register It**
 ```python
+# In tools/__init__.py
 from .your_tool import YourTool
-
-your_tool = YourTool()
-registry.register(your_tool)
+registry.register(YourTool())
 ```
 
-### environment variables
+## 🛡️ Security
 
-| variable | description | required | default |
-|----------|-------------|----------|---------|
-| `OPENAI_API_KEY` | openai api key | yes | - |
-| `OPENAI_MODEL` | openai model to use | no | `gpt-4o-mini` |
-| `OPENAI_TEMPERATURE` | response randomness (0.0-2.0) | no | `0.7` |
-| `OPENAI_MAX_TOKENS` | maximum tokens per response | no | `1000` |
+- **Safe Evaluation**: Calculator uses AST parsing to prevent code injection
+- **Input Validation**: All parameters validated before execution
+- **Error Handling**: Comprehensive error handling prevents crashes
+- **No Arbitrary Code**: Tools can't execute arbitrary user code
 
-### running tests
+## 🐛 Troubleshooting
 
-```bash
-# run with pytest (when tests are added)
-uv run pytest
+**OpenAI API Key Issues**
+- Check your `.env` file contains `OPENAI_API_KEY`
+- Ensure your API key is valid and has credits
+- Make sure the file isn't being ignored by git
 
-# run type checking
-uv run mypy src/
-```
+**Tool Not Found Errors**
+- Verify tools are registered in `tools/__init__.py`
+- Check for import errors in your tool modules
+- Restart the application after adding new tools
 
-## 🤍 security features
+## 📚 Learning Resources
 
-- **safe expression evaluation** 🤍 calculator uses ast parsing to prevent code injection
-- **input validation** 🤍 all tool parameters are validated before execution
-- **error handling** 🤍 comprehensive error handling prevents crashes
+- [OpenAI Function Calling Docs](https://platform.openai.com/docs/guides/function-calling)
+- [Rich Terminal Library](https://rich.readthedocs.io/)
+- [Modern Python Typing](https://docs.python.org/3/library/typing.html)
 
-## 🤍 troubleshooting
+## 🤝 Contributing
 
-### common issues
+Feel free to fork and submit PRs! This is a learning project, so all improvements welcome.
 
-1. **"openai api key not found"** 🤍
-   - check that your `.env` file exists and contains `OPENAI_API_KEY`
-   - ensure the api key is valid and has credits
+## 📄 License
 
-2. **"tool not found" errors** 🤍
-   - verify all tools are properly registered in `tools/__init__.py`
-   - check for import errors in tool modules
+MIT License - feel free to use this for your own learning projects.
 
-### debug mode
+## 🙏 Thanks
 
-set environment variables for debugging:
-
-```bash
-export PYTHONPATH=src
-export OPENAI_LOG_LEVEL=debug
-```
-
-## 🤍 learning resources
-
-- [openai function calling documentation](https://platform.openai.com/docs/guides/function-calling)
-- [rich terminal library](https://rich.readthedocs.io/)
-- [pydantic for data validation](https://pydantic-docs.helpmanual.io/)
-- [modern python typing](https://docs.python.org/3/library/typing.html)
-
-## 🤍 contributing
-
-1. fork the repository
-2. create a feature branch
-3. add your changes with proper type hints
-4. test your changes
-5. submit a pull request
-
-## 🤍 license
-
-this project is licensed under the mit license.
-
-## 🤍 acknowledgments
-
-- openai for the gpt-4o-mini model 🤍
-- rich library for beautiful terminal output 🤍
-- python community for excellent async support 🤍
+Built for DSCubed Winter Program 2025 - thanks for the opportunity to learn function calling properly!

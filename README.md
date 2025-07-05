@@ -1,4 +1,4 @@
-# 🤖 Tool Calling Chatbot
+# Tool Calling Chatbot
 
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![OpenAI GPT-4o-mini](https://img.shields.io/badge/OpenAI-GPT--4o--mini-green.svg)](https://openai.com/)
@@ -10,46 +10,46 @@ A project I built to make my winter break meaningful - learning function calling
 
 Built a modular command-line AI assistant that integrates with OpenAI's GPT-4o-mini, featuring three distinct function calling patterns that showcase different use cases.
 
-## 🎯 Function Calling Patterns
+## Function Calling Patterns
 
 This project demonstrates three different function calling approaches:
 
-**Tool 1: Calculator** 📊 
+**Tool 1: Calculator**  
 - *Required by Project 1* - Safe mathematical expression evaluation
 - Pattern: Direct computation with validation and error handling
 - Showcases: AST parsing, security considerations, structured output
 
-**Tool 2: Vintage Outfit Generator** 🧥
+**Tool 2: Vintage Outfit Generator** 
 - *Personal choice* - My interest in fashion and Narrm's vintage scene  
 - Pattern: Combinatorial generation with contextual logic
 - Showcases: Random selection, seasonal adaptation, local knowledge integration
 
-**Tool 3: Narrm Food Recommender** 🍜
+**Tool 3: Narrm Food Recommender** 
 - *Personal choice* - Being a bit of a foodie in Melbourne
 - Pattern: Filtering and recommendation with multi-criteria logic
 - Showcases: Complex parameter handling, data filtering, personalized results
 
-## 🚀 Quick Demo
+## Quick Demo
 
 ```bash
 $ chatbot
 
-🤖 AI Tool Calling Chatbot
+AI Tool Calling Chatbot
 
 You: Calculate the compound interest on $1000 at 5% for 3 years
-🔧 Tool Call: calculator(expression=1000 * (1 + 0.05)**3)
-📊 Result: $1157.63
+Tool Call: calculator(expression=1000 * (1 + 0.05)**3)
+Result: $1157.63
 
 You: Generate a vintage outfit for a concert in winter
-🎨 Tool Call: vintage_outfit_generator(occasion=concert, season=winter)
-🧥 Result: Oversized band tee, vintage leather jacket, Doc Martens...
+Tool Call: vintage_outfit_generator(occasion=concert, season=winter)
+Result: Oversized band tee, vintage leather jacket, Doc Martens...
 
 You: Recommend a cheap restaurant for students
-🍴 Tool Call: narrm_food_recommender(budget=cheap, student=true)
-🍜 Result: Dumplings Plus - handmade dumplings, $8-12, student discount available
+Tool Call: narrm_food_recommender(budget=cheap, student=true)
+Result: Dumplings Plus - handmade dumplings, $8-12, student discount available
 ```
 
-## ✨ Features
+## Features
 
 - **Smart Function Calling** - AI automatically selects the right tool for your request
 - **Security First** - Safe code execution with AST parsing for calculations
@@ -59,7 +59,7 @@ You: Recommend a cheap restaurant for students
 - **Type Safety** - Comprehensive type hints throughout
 - **Conversation Memory** - Maintains context across interactions
 
-## 🛠️ Setup
+## Setup
 
 ### Prerequisites
 - Python 3.11+
@@ -101,41 +101,41 @@ python -m tool_calling_chatbot.main
 uv run python -m tool_calling_chatbot.main
 ```
 
-## 🎮 Usage Examples
+## Usage Examples
 
-### 📊 Calculator Tool
+### Calculator Tool
 ```
 You: What's the area of a circle with radius 7?
 Assistant: I'll calculate that for you.
-🔧 Tool Call: calculator(expression=3.14159 * 7 * 7)
-📊 Result: 153.94 square units
+Tool Call: calculator(expression=3.14159 * 7 * 7)
+Result: 153.94 square units
 ```
 
-### 🧥 Vintage Outfit Generator
+### Vintage Outfit Generator
 ```
 You: I need a vintage Narrm outfit for a date night in autumn
 Assistant: Perfect! Let me create a vintage Narrm outfit for your autumn date.
-🎨 Tool Call: vintage_outfit_generator(occasion=date, season=autumn)
+Tool Call: vintage_outfit_generator(occasion=date, season=autumn)
 Result: Vintage outfit with curated Narrm shopping spots and seasonal tips
 ```
 
-### 🍜 Narrm Food Recommender
+### Narrm Food Recommender
 ```
 You: Find me a good spot for lunch under $20
 Assistant: I'll find you a great lunch spot within budget.
-🍴 Tool Call: narrm_food_recommender(budget=moderate, cuisine=any)
+Tool Call: narrm_food_recommender(budget=moderate, cuisine=any)
 Result: Pellegrini's Espresso Bar - authentic Italian since 1954, $6-15
 ```
 
-## 🎯 Available Tools
+## Available Tools
 
 | Tool | Function | Purpose |
 |------|----------|---------|
-| 📊 Calculator | `calculator` | Mathematical expression evaluation |
-| 🧥 Vintage Generator | `vintage_outfit_generator` | Narrm-focused vintage outfit recommendations |
-| 🍜 Food Recommender | `narrm_food_recommender` | Local restaurant suggestions with student discounts |
+| Calculator | `calculator` | Mathematical expression evaluation |
+| Vintage Generator | `vintage_outfit_generator` | Narrm-focused vintage outfit recommendations |
+| Food Recommender | `narrm_food_recommender` | Local restaurant suggestions with student discounts |
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 tool-calling-chatbot/
@@ -154,7 +154,7 @@ tool-calling-chatbot/
 └── .env.example              # Environment template
 ```
 
-## 🔧 Adding New Tools
+## Adding New Tools
 
 1. **Create Your Tool**
 ```python
@@ -181,14 +181,14 @@ from .your_tool import YourTool
 registry.register(YourTool())
 ```
 
-## 🛡️ Security
+## Security
 
 - **Safe Evaluation**: Calculator uses AST parsing to prevent code injection
 - **Input Validation**: All parameters validated before execution
 - **Error Handling**: Comprehensive error handling prevents crashes
 - **No Arbitrary Code**: Tools can't execute arbitrary user code
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 **OpenAI API Key Issues**
 - Check your `.env` file contains `OPENAI_API_KEY`
@@ -200,20 +200,20 @@ registry.register(YourTool())
 - Check for import errors in your tool modules
 - Restart the application after adding new tools
 
-## 📚 Learning Resources
+## Learning Resources
 
 - [OpenAI Function Calling Docs](https://platform.openai.com/docs/guides/function-calling)
 - [Rich Terminal Library](https://rich.readthedocs.io/)
 - [Modern Python Typing](https://docs.python.org/3/library/typing.html)
 
-## 🤝 Contributing
+## Contributing
 
 Feel free to fork and submit PRs! This is a learning project, so all improvements welcome.
 
-## 📄 License
+## License
 
 MIT License - feel free to use this for your own learning projects.
 
-## 🙏 Thanks
+## Thanks
 
 Built for DSCubed Winter Program 2025 - thanks the AI team for the opportunity to learn function calling!

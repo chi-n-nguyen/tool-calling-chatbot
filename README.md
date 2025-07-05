@@ -6,26 +6,26 @@
 
 **For AI @ DSCubed Winter Program 2025**
 
-A project I built to make my winter break meaningful - learning function calling with OpenAI while building tools around my actual interests (food & streetwear fashion). Started as Project 1 requirements but evolved into something more personal.
+A project I built to make my winter break meaningful - learning function calling with OpenAI while building tools around my actual interests (food & vintage fashion). Started as Project 1 requirements but evolved into something more personal.
 
 Built a modular command-line AI assistant that integrates with OpenAI's GPT-4o-mini, featuring three distinct function calling patterns that showcase different use cases.
 
 ## Function Calling Patterns
 
-This project demonstrates three different function calling approaches:
+This project demonstrates 3 different function calling approaches:
 
 **Tool 1: Calculator**  
-- *Required by Project 1* - Safe mathematical expression evaluation
+- Required by Project 1: Safe mathematical expression evaluation
 - Pattern: Direct computation with validation and error handling
 - Showcases: AST parsing, security considerations, structured output
 
 **Tool 2: Vintage Outfit Generator** 
-- *Personal choice* - My interest in fashion and Narrm's vintage scene  
+- Personal choice: My interest in fashion and Narrm's vintage scene  
 - Pattern: Combinatorial generation with contextual logic
 - Showcases: Random selection, seasonal adaptation, local knowledge integration
 
 **Tool 3: Narrm Food Recommender** 
-- *Personal choice* - Being a bit of a foodie in Melbourne
+- Personal choice: Being a bit of a foodie in Melbourne
 - Pattern: Filtering and recommendation with multi-criteria logic
 - Showcases: Complex parameter handling, data filtering, personalized results
 

@@ -1,0 +1,23 @@
+[project]
+name = "tool-calling-chatbot"
+version = "0.1.0"
+description = "AI-Powered CLI Assistant with OpenAI Function Calling"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "openai>=1.0.0",
+    "python-dotenv>=1.0.0",
+    "rich>=13.0.0",
+    "pydantic>=2.0.0",
+    "asyncio",
+]
+
+[project.scripts]
+chatbot = "tool_calling_chatbot.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/tool_calling_chatbot"]

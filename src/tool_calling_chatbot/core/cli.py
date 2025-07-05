@@ -36,29 +36,29 @@ class ChatbotCLI:
     def _print_welcome(self) -> None:
         """print welcome message."""
         welcome_text = """
-        # ai tool calling chatbot
+        # 🤍 ai tool calling chatbot
         
-        welcome to your ai assistant with function calling capabilities.
+        hey there! welcome to your friendly ai assistant with some handy tools to help you out.
         
-        **available commands:**
-        - `/help` - show this help message
-        - `/tools` - list available tools
-        - `/history` - show conversation history
-        - `/clear` - clear conversation history
-        - `/exit` or `/quit` - exit the chatbot
+        **what can i help you with today?**
+        - `/help` 🤎 show this help message
+        - `/tools` 🤍 list available tools
+        - `/history` 🤍 show conversation history
+        - `/clear` 🤍 clear conversation history
+        - `/exit` or `/quit` 🤍 exit the chatbot
         
-        **available tools:**
-        - `calculator` - perform mathematical calculations
-        - `vintage_outfit_generator` - generate vintage melbourne core outfits
-        - `melbourne_food_recommender` - recommend melbourne restaurants
+        **tools i can use for you:**
+        - `calculator` 🤍 perform mathematical calculations
+        - `vintage_outfit_generator` 🤎 generate vintage narrm core outfits
+        - `narrm_food_recommender` 🤍 recommend narrm restaurants
         
-        start chatting or ask me to use any of the available tools.
+        just ask me anything or request one of these tools - i'm here to help!
         """
         
         self.console.print(Panel(
             Markdown(welcome_text),
-            title="welcome",
-            border_style="blue"
+            title="🤍 welcome friend",
+            border_style="bright_white"
         ))
     
     def _show_help(self) -> None:
@@ -66,16 +66,16 @@ class ChatbotCLI:
         help_text = """
         ## available commands:
         
-        - `/help` - show this help message
-        - `/tools` - list available tools with descriptions
-        - `/history` - show conversation history
-        - `/clear` - clear conversation history
-        - `/exit` or `/quit` - exit the chatbot
+        - `/help` 🤍 show this help message
+        - `/tools` 🤍 list available tools with descriptions
+        - `/history` 🤍 show conversation history
+        - `/clear` 🤍 clear conversation history
+        - `/exit` or `/quit` 🤍 exit the chatbot
         
         ## how to use:
         
-        1. **ask questions**: just type your question naturally
-        2. **use tools**: ask me to calculate, generate outfits, or recommend food
+        1. **ask questions** 🤍 just type your question naturally
+        2. **use tools** 🤍 ask me to calculate, generate outfits, or recommend food
         3. **examples**:
            - "calculate 2 + 3 * 4"
            - "generate a vintage outfit for a concert in winter"
@@ -86,16 +86,16 @@ class ChatbotCLI:
         
         self.console.print(Panel(
             Markdown(help_text),
-            title="help",
-            border_style="green"
+            title="🤍 help",
+            border_style="bright_white"
         ))
     
     def _show_tools(self) -> None:
         """show available tools."""
         tools = registry.get_all()
         
-        table = Table(title="available tools")
-        table.add_column("tool name", style="cyan", no_wrap=True)
+        table = Table(title="🤍 available tools")
+        table.add_column("tool name", style="bright_white", no_wrap=True)
         table.add_column("description", style="white")
         table.add_column("parameters", style="yellow")
         
@@ -119,7 +119,7 @@ class ChatbotCLI:
         
         self.console.print(Panel(
             f"[bold]conversation history ({len(history)} messages)[/bold]",
-            border_style="blue"
+            border_style="bright_white"
         ))
         
         for i, message in enumerate(history, 1):
@@ -128,14 +128,14 @@ class ChatbotCLI:
             
             # style based on role
             if role == "user":
-                style = "blue"
-                prefix = "user"
+                style = "bright_white"
+                prefix = "🤍 you"
             elif role == "assistant":
-                style = "green"
-                prefix = "assistant"
+                style = "bright_white"
+                prefix = "🤍 assistant"
             elif role == "tool":
                 style = "yellow"
-                prefix = "tool"
+                prefix = "🤍 tool"
             else:
                 style = "white"
                 prefix = role
@@ -149,25 +149,25 @@ class ChatbotCLI:
                 for tool_call in message["tool_calls"]:
                     func_name = tool_call["function"]["name"]
                     args = tool_call["function"]["arguments"]
-                    self.console.print(f"  [dim]tool called: {func_name}({args})[/dim]")
+                    self.console.print(f"  [dim]🤍 tool called: {func_name}({args})[/dim]")
     
     def _clear_history(self) -> None:
         """clear conversation history."""
         self.openai_client.clear_history()
-        self.console.print("[green]conversation history cleared.[/green]")
+        self.console.print("[bright_white]🤍 conversation history cleared.[/bright_white]")
     
     def _exit(self) -> None:
         """exit the chatbot."""
-        self.console.print("[blue]goodbye. thanks for using the ai chatbot.[/blue]")
+        self.console.print("[bright_white]🤍 thanks for chatting! see you later.[/bright_white]")
         sys.exit(0)
     
     def _print_user_input(self, message: str) -> None:
         """print user input with styling."""
-        self.console.print(f"\n[blue]you:[/blue] {message}")
+        self.console.print(f"\n[bright_white]🤍 you:[/bright_white] {message}")
     
     def _print_assistant_response(self, response: str) -> None:
         """print assistant response with styling."""
-        self.console.print(f"\n[green]assistant:[/green]")
+        self.console.print(f"\n[bright_white]🤍 assistant:[/bright_white]")
         self.console.print(f"  {response}")
     
     def _print_tool_calls(self, tool_results: List[Dict[str, Any]]) -> None:
@@ -180,22 +180,22 @@ class ChatbotCLI:
             # format arguments
             args_str = ", ".join([f"{k}={v}" for k, v in arguments.items()])
             
-            self.console.print(f"\n[yellow]tool call:[/yellow] {function_name}({args_str})")
+            self.console.print(f"\n[yellow]🤍 tool call:[/yellow] {function_name}({args_str})")
             
             if result["success"]:
-                self.console.print(f"[green]result:[/green] {result['data']}")
+                self.console.print(f"[bright_white]🤍 result:[/bright_white] {result['data']}")
             else:
-                self.console.print(f"[red]error:[/red] {result['error']}")
+                self.console.print(f"[red]🤍 error:[/red] {result['error']}")
     
     def _print_error(self, error: str) -> None:
         """print error message."""
-        self.console.print(f"\n[red]error:[/red] {error}")
+        self.console.print(f"\n[red]🤍 error:[/red] {error}")
     
     async def _handle_user_input(self, user_input: str) -> None:
         """handle user input and get ai response."""
         try:
             # show typing indicator
-            with self.console.status("[blue]thinking...[/blue]"):
+            with self.console.status("[bright_white]🤍 thinking...[/bright_white]"):
                 response_data = await self.openai_client.chat_completion(user_input)
             
             # print tool calls if any
@@ -216,7 +216,7 @@ class ChatbotCLI:
         while True:
             try:
                 # get user input
-                user_input = Prompt.ask("\n[blue]you[/blue]", default="").strip()
+                user_input = Prompt.ask("\n[bright_white]🤍 you[/bright_white]", default="").strip()
                 
                 # check for empty input
                 if not user_input:
@@ -228,8 +228,8 @@ class ChatbotCLI:
                     if command in self.commands:
                         self.commands[command]()
                     else:
-                        self.console.print(f"[red]unknown command: {user_input}[/red]")
-                        self.console.print("[yellow]type /help for available commands.[/yellow]")
+                        self.console.print(f"[red]🤍 unknown command: {user_input}[/red]")
+                        self.console.print("[yellow]🤍 type /help for available commands.[/yellow]")
                     continue
                 
                 # print user input
@@ -239,10 +239,10 @@ class ChatbotCLI:
                 await self._handle_user_input(user_input)
                 
             except KeyboardInterrupt:
-                self.console.print("\n[yellow]goodbye.[/yellow]")
+                self.console.print("\n[bright_white]🤍 goodbye![/bright_white]")
                 break
             except EOFError:
-                self.console.print("\n[yellow]goodbye.[/yellow]")
+                self.console.print("\n[bright_white]🤍 goodbye![/bright_white]")
                 break
             except Exception as e:
                 self._print_error(f"unexpected error: {str(e)}")
@@ -259,12 +259,12 @@ async def main() -> None:
         
     except ValueError as e:
         console = Console()
-        console.print(f"[red]configuration error:[/red] {str(e)}")
-        console.print("[yellow]please check your .env file or environment variables.[/yellow]")
+        console.print(f"[red]🤍 configuration error:[/red] {str(e)}")
+        console.print("[yellow]🤍 please check your .env file or environment variables.[/yellow]")
         sys.exit(1)
     except Exception as e:
         console = Console()
-        console.print(f"[red]unexpected error:[/red] {str(e)}")
+        console.print(f"[red]🤍 unexpected error:[/red] {str(e)}")
         sys.exit(1)
 
 

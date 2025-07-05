@@ -2,16 +2,16 @@
 
 from .calculator import Calculator
 from .vintage_outfit_generator import VintageOutfitGenerator
-from .melbourne_food_recommender import MelbourneFoodRecommender
+from .narrm_food_recommender import NarrmFoodRecommender
 from ..core.base import registry
 
 # register all tools
 calculator = Calculator()
 vintage_outfit_generator = VintageOutfitGenerator()
-melbourne_food_recommender = MelbourneFoodRecommender()
+narrm_food_recommender = NarrmFoodRecommender()
 
 registry.register(calculator)
 registry.register(vintage_outfit_generator)
-registry.register(melbourne_food_recommender)
+registry.register(narrm_food_recommender)
 
-__all__ = ["Calculator", "VintageOutfitGenerator", "MelbourneFoodRecommender", "registry"] 
+__all__ = ["Calculator", "VintageOutfitGenerator", "NarrmFoodRecommender", "registry"] 

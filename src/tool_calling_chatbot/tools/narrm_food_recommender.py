@@ -1,12 +1,12 @@
-"""melbourne food recommendation tool."""
+"""narrm food recommendation tool."""
 
 import random
 from typing import Any, List
 from ..core.base import BaseTool, ToolParameter, ToolResult
 
 
-class MelbourneFoodRecommender(BaseTool):
-    """melbourne food recommendation tool for local dining."""
+class NarrmFoodRecommender(BaseTool):
+    """narrm food recommendation tool for local dining."""
     
     CHEAP_EATS = [
         {
@@ -99,11 +99,11 @@ class MelbourneFoodRecommender(BaseTool):
     
     @property
     def name(self) -> str:
-        return "melbourne_food_recommender"
+        return "narrm_food_recommender"
     
     @property
     def description(self) -> str:
-        return "recommends melbourne restaurants based on budget, cuisine, and student status"
+        return "recommends narrm restaurants based on budget, cuisine, and student status"
     
     @property
     def parameters(self) -> List[ToolParameter]:
@@ -149,7 +149,7 @@ class MelbourneFoodRecommender(BaseTool):
         return filtered
     
     async def execute(self, budget: str = "cheap", cuisine: str = "any", student: bool = False) -> ToolResult:
-        """execute the melbourne food recommender tool."""
+        """execute the narrm food recommender tool."""
         try:
             # select restaurant pool based on budget
             if budget == "cheap":
@@ -183,7 +183,7 @@ class MelbourneFoodRecommender(BaseTool):
                 student_note = "\n\nno student discount here, but great value for money"
             
             recommendation_text = f"""
-melbourne food recommendation:
+narrm food recommendation:
 
 {recommendation['name']}
 cuisine: {recommendation['cuisine']}
@@ -191,8 +191,8 @@ location: {recommendation['location']}
 price range: {recommendation['price']}
 specialty: {recommendation['specialty']}{student_note}
 
-melbourne food tip: explore the laneways around this area for more hidden gems, 
-and remember melbourne's dining scene is best experienced by walking between spots.
+narrm food tip: explore the laneways around this area for more hidden gems, 
+and remember narrm's dining scene is best experienced by walking between spots.
             """.strip()
             
             return ToolResult(

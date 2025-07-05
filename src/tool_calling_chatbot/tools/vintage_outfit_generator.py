@@ -1,4 +1,4 @@
-"""vintage melbourne core outfit generator tool."""
+"""vintage narrm core outfit generator tool."""
 
 import random
 from typing import Any, List
@@ -6,10 +6,10 @@ from ..core.base import BaseTool, ToolParameter, ToolResult
 
 
 class VintageOutfitGenerator(BaseTool):
-    """vintage melbourne core outfit generator tool."""
+    """vintage narrm core outfit generator tool."""
     
     VINTAGE_TOPS = [
-        "oversized band tee (nirvana, pearl jam, or local melbourne bands)",
+        "oversized band tee (nirvana, pearl jam, or local narrm bands)",
         "striped long sleeve shirt layered under vintage slip dress",
         "cropped vintage denim jacket over basic black tee",
         "oversized blazer from savers or chapel street vintage store",
@@ -33,7 +33,7 @@ class VintageOutfitGenerator(BaseTool):
     VINTAGE_ACCESSORIES = [
         "chunky vintage belt from greville street vintage stores",
         "black doc martens or vintage band tee tied around waist",
-        "vintage leather jacket (essential melbourne piece)",
+        "vintage leather jacket (essential narrm piece)",
         "oversized vintage sunglasses",
         "vintage band pins on denim jacket",
         "layered silver jewelry from vintage markets",
@@ -41,11 +41,11 @@ class VintageOutfitGenerator(BaseTool):
         "canvas tote bag from local record stores"
     ]
     
-    MELBOURNE_VINTAGE_SPOTS = [
+    NARRM_VINTAGE_SPOTS = [
         "chapel street vintage stores",
         "camberwell sunday market",
         "greville street vintage shopping",
-        "savers stores across melbourne",
+        "savers stores across narrm",
         "vintage clothing warehouse richmond",
         "lost and found market",
         "vintage depot brunswick",
@@ -58,7 +58,7 @@ class VintageOutfitGenerator(BaseTool):
     
     @property
     def description(self) -> str:
-        return "generates vintage melbourne core outfit recommendations with local shopping spots"
+        return "generates vintage narrm core outfit recommendations with local shopping spots"
     
     @property
     def parameters(self) -> List[ToolParameter]:
@@ -73,30 +73,30 @@ class VintageOutfitGenerator(BaseTool):
             ToolParameter(
                 name="season",
                 type="string", 
-                description="melbourne season for appropriate layering",
+                description="narrm season for appropriate layering",
                 required=False,
                 enum=["summer", "autumn", "winter", "spring"]
             )
         ]
     
     def _get_seasonal_modifications(self, season: str) -> dict:
-        """get seasonal modifications for melbourne weather."""
+        """get seasonal modifications for narrm weather."""
         modifications = {
             "summer": {
                 "extra_items": ["vintage band tee", "denim shorts", "canvas sneakers"],
-                "note": "melbourne summer can be unpredictable, always carry a light jacket"
+                "note": "narrm summer can be unpredictable, always carry a light jacket"
             },
             "autumn": {
                 "extra_items": ["vintage cardigan", "ankle boots", "light scarf"],
-                "note": "perfect vintage layering season in melbourne"
+                "note": "perfect vintage layering season in narrm"
             },
             "winter": {
                 "extra_items": ["vintage wool coat", "chunky knit sweater", "warm boots"],
-                "note": "melbourne winter calls for serious vintage layering"
+                "note": "narrm winter calls for serious vintage layering"
             },
             "spring": {
                 "extra_items": ["light vintage jacket", "transitional boots", "colorful accessories"],
-                "note": "classic melbourne 'four seasons in one day' weather prep"
+                "note": "classic narrm 'four seasons in one day' weather prep"
             }
         }
         return modifications.get(season, modifications["autumn"])
@@ -108,14 +108,14 @@ class VintageOutfitGenerator(BaseTool):
             top = random.choice(self.VINTAGE_TOPS)
             bottom = random.choice(self.VINTAGE_BOTTOMS)
             accessories = random.sample(self.VINTAGE_ACCESSORIES, 2)
-            shopping_spot = random.choice(self.MELBOURNE_VINTAGE_SPOTS)
+            shopping_spot = random.choice(self.NARRM_VINTAGE_SPOTS)
             
             # get seasonal modifications
             seasonal_mods = self._get_seasonal_modifications(season)
             
             # create outfit description
             outfit_description = f"""
-vintage melbourne core outfit for {occasion} in {season}:
+vintage narrm core outfit for {occasion} in {season}:
 
 top: {top}
 bottom: {bottom}
@@ -126,7 +126,7 @@ where to shop: {shopping_spot}
 
 styling note: {seasonal_mods['note']}
 
-melbourne vintage tip: hit up multiple chapel street stores in one trip, 
+narrm vintage tip: hit up multiple chapel street stores in one trip, 
 and always check camberwell market on sundays for unique finds.
             """.strip()
             

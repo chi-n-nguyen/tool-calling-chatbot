@@ -179,7 +179,7 @@ tool-calling-chatbot/
 │           ├── __init__.py
 │           ├── calculator.py    # calculator tool
 │           ├── vintage_outfit_generator.py # outfit generator
-│           └── melbourne_food_recommender.py # food recommender
+│           └── narrm_food_recommender.py # food recommender
 ├── pyproject.toml              # project configuration
 ├── .env.example               # environment template
 ├── .gitignore                # git ignore rules

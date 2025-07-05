@@ -214,6 +214,6 @@ Feel free to fork and submit PRs! This is a learning project, so all improvement
 
 MIT License - feel free to use this for your own learning projects.
 
-## Thanks
+## Shoutouts
 
 Built for DSCubed Winter Program 2025 - thanks the AI team for the opportunity to learn function calling!

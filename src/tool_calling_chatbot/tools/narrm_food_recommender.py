@@ -48,6 +48,62 @@ class NarrmFoodRecommender(BaseTool):
             "price": "$15-25",
             "specialty": "all you can eat korean bbq",
             "student_discount": True
+        },
+        {
+            "name": "hanoi hannah",
+            "cuisine": "vietnamese",
+            "location": "smith street collingwood",
+            "price": "$14-22",
+            "specialty": "modern vietnamese street food",
+            "student_discount": True
+        },
+        {
+            "name": "momo grill",
+            "cuisine": "nepalese",
+            "location": "russell street",
+            "price": "$10-16",
+            "specialty": "authentic momos and dal bhat",
+            "student_discount": True
+        },
+        {
+            "name": "rumi",
+            "cuisine": "middle eastern",
+            "location": "brunswick street",
+            "price": "$12-20",
+            "specialty": "lebanese mezze and charcoal grills",
+            "student_discount": False
+        },
+        {
+            "name": "laksa king",
+            "cuisine": "malaysian",
+            "location": "flemington",
+            "price": "$9-15",
+            "specialty": "legendary curry laksa",
+            "student_discount": False
+        },
+        {
+            "name": "ghost donkey",
+            "cuisine": "mexican",
+            "location": "collins street",
+            "price": "$8-14",
+            "specialty": "tacos and mezcal bar vibes",
+            "student_discount": True
+        },
+        {
+            "name": "crossways food for life",
+            "cuisine": "vegetarian",
+            "location": "swanston street",
+            "price": "$5-10",
+            "specialty": "hare krishna vegetarian buffet",
+            "student_discount": True
+        },
+        {
+            "name": "miznon",
+            "cuisine": "israeli",
+            "location": "fitzroy",
+            "price": "$12-18",
+            "specialty": "cauliflower and pita perfection",
+            "student_discount": False
         }
     ]
     
@@ -75,6 +131,46 @@ class NarrmFoodRecommender(BaseTool):
             "price": "$35-55",
             "specialty": "modern greek with creative cocktails",
             "student_discount": False
+        },
+        {
+            "name": "tipo 00",
+            "cuisine": "italian",
+            "location": "little bourke street",
+            "price": "$28-45",
+            "specialty": "fresh pasta and natural wines",
+            "student_discount": False
+        },
+        {
+            "name": "mr miyagi",
+            "cuisine": "japanese",
+            "location": "fawkner",
+            "price": "$30-50",
+            "specialty": "izakaya vibes with killer cocktails",
+            "student_discount": False
+        },
+        {
+            "name": "huxtaburger",
+            "cuisine": "american",
+            "location": "smith street",
+            "price": "$18-28",
+            "specialty": "gourmet burgers and loaded fries",
+            "student_discount": False
+        },
+        {
+            "name": "transformer",
+            "cuisine": "fusion",
+            "location": "fitzroy",
+            "price": "$25-38",
+            "specialty": "robot-themed asian fusion",
+            "student_discount": False
+        },
+        {
+            "name": "dealer de cafe",
+            "cuisine": "european",
+            "location": "collins street",
+            "price": "$22-35",
+            "specialty": "all day brunch and natural wines",
+            "student_discount": False
         }
     ]
     
@@ -93,6 +189,38 @@ class NarrmFoodRecommender(BaseTool):
             "location": "degraves street",
             "price": "$4-10",
             "specialty": "iconic laneway coffee culture",
+            "student_discount": False
+        },
+        {
+            "name": "patricia coffee brewers",
+            "cuisine": "coffee",
+            "location": "little bourke street",
+            "price": "$5-12",
+            "specialty": "third wave coffee roastery",
+            "student_discount": False
+        },
+        {
+            "name": "seven seeds",
+            "cuisine": "coffee",
+            "location": "carlton",
+            "price": "$4-9",
+            "specialty": "warehouse coffee roasting",
+            "student_discount": False
+        },
+        {
+            "name": "st ali",
+            "cuisine": "coffee",
+            "location": "south melbourne",
+            "price": "$5-11",
+            "specialty": "industrial coffee culture pioneer",
+            "student_discount": False
+        },
+        {
+            "name": "auction rooms",
+            "cuisine": "coffee",
+            "location": "north melbourne",
+            "price": "$4-10",
+            "specialty": "converted warehouse coffee vibes",
             "student_discount": False
         }
     ]
@@ -136,7 +264,7 @@ class NarrmFoodRecommender(BaseTool):
         
         if cuisine != "any":
             if cuisine == "asian":
-                filtered = [r for r in filtered if r["cuisine"] in ["chinese", "vietnamese", "korean", "thai"]]
+                filtered = [r for r in filtered if r["cuisine"] in ["chinese", "vietnamese", "korean", "thai", "japanese", "malaysian", "nepalese"]]
             else:
                 filtered = [r for r in filtered if r["cuisine"] == cuisine]
         
@@ -147,6 +275,18 @@ class NarrmFoodRecommender(BaseTool):
                 return student_places
         
         return filtered
+    
+    def _add_creative_variation(self, recommendation: dict) -> str:
+        """add creative variations to make recommendations feel more dynamic."""
+        variations = [
+            f"hidden gem alert: {recommendation['name']} on {recommendation['location']}",
+            f"local favorite: {recommendation['name']} - {recommendation['specialty']}",
+            f"narrm classic: {recommendation['name']} ({recommendation['cuisine']} vibes)",
+            f"worth the trek: {recommendation['name']} in {recommendation['location']}",
+            f"insider pick: {recommendation['name']} - {recommendation['specialty']}"
+        ]
+        
+        return random.choice(variations)
     
     async def execute(self, budget: str = "cheap", cuisine: str = "any", student: bool = False) -> ToolResult:
         """execute the narrm food recommender tool."""
@@ -175,6 +315,9 @@ class NarrmFoodRecommender(BaseTool):
             # select random recommendation
             recommendation = random.choice(filtered_restaurants)
             
+            # create creative intro
+            creative_intro = self._add_creative_variation(recommendation)
+            
             # create recommendation text
             student_note = ""
             if student and recommendation["student_discount"]:
@@ -183,7 +326,7 @@ class NarrmFoodRecommender(BaseTool):
                 student_note = "\n\nno student discount here, but great value for money"
             
             recommendation_text = f"""
-narrm food recommendation:
+{creative_intro}
 
 {recommendation['name']}
 cuisine: {recommendation['cuisine']}

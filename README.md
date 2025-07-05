@@ -216,4 +216,4 @@ MIT License - feel free to use this for your own learning projects.
 
 ## 🙏 Thanks
 
-Built for DSCubed Winter Program 2025 - thanks for the opportunity to learn function calling properly!
+Built for DSCubed Winter Program 2025 - thanks the AI team for the opportunity to learn function calling!

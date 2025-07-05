@@ -1,189 +1,196 @@
-# 🤖 AI Tool Calling Chatbot
+# ai tool calling chatbot
 
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![OpenAI GPT-4o-mini](https://img.shields.io/badge/OpenAI-GPT--4o--mini-green.svg)](https://openai.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A modular command-line AI assistant that integrates with OpenAI's GPT-4o-mini model, featuring an extensible tool system for function calling.
+a modular command-line ai assistant that integrates with openai's gpt-4o-mini model, featuring an extensible tool system for function calling.
 
-## 🎬 Demo
-
-> **Note**: Add a demo GIF or video here to showcase the chatbot in action!
+## demo
 
 ```bash
-# Example interaction
+# example interaction
 $ chatbot
 
-🤖 AI Tool Calling Chatbot
+ai tool calling chatbot
 
-You: Calculate the area of a circle with radius 5
-🔧 Tool Call: calculator(expression=3.14159 * 5 * 5)
-✅ Result: 78.54
-🤖 Assistant: The area of a circle with radius 5 is approximately 78.54 square units.
+you: calculate the area of a circle with radius 5
+tool call: calculator(expression=3.14159 * 5 * 5)
+result: 78.54
+assistant: the area of a circle with radius 5 is approximately 78.54 square units.
 
-You: Tell me a programming joke
-🔧 Tool Call: random_joke(category=programming)
-✅ Result: Why do programmers prefer dark mode? Because light attracts bugs! 😄
-🤖 Assistant: Here's a programming joke for you: Why do programmers prefer dark mode? Because light attracts bugs! 😄
+you: generate a vintage outfit for a concert in winter
+tool call: vintage_outfit_generator(occasion=concert, season=winter)
+result: vintage melbourne core outfit with band tee, leather jacket, and doc martens
+assistant: here's a perfect vintage melbourne outfit for a winter concert...
+
+you: recommend a cheap restaurant for students
+tool call: melbourne_food_recommender(budget=cheap, student=true)
+result: dumplings plus on bourke street with student discount
+assistant: i recommend dumplings plus on bourke street - great value and student discount available.
 ```
 
-## ✨ Features
+## features
 
-- **🔧 Function Calling**: AI can automatically call predefined tools based on user requests
-- **📊 Calculator**: Safe mathematical expression evaluation with AST parsing
-- **📁 File Reader**: Read text files with comprehensive safety checks
-- **😄 Random Jokes**: Get programming and general jokes for entertainment
-- **🎨 Rich CLI**: Beautiful terminal interface with colors, animations, and formatting
-- **🔄 Async Support**: Efficient asynchronous operations with concurrent tool execution
-- **📝 Conversation History**: Maintain chat context across interactions with persistent memory
-- **🛡️ Type Safety**: Comprehensive type hints throughout the codebase using modern Python typing
-- **🔐 Security**: Input validation, safe code execution, and error handling
+- **function calling**: ai can automatically call predefined tools based on user requests
+- **calculator**: safe mathematical expression evaluation with ast parsing
+- **vintage outfit generator**: melbourne-focused vintage outfit recommendations
+- **melbourne food recommender**: local restaurant suggestions with student discounts
+- **rich cli**: beautiful terminal interface with colors and formatting
+- **async support**: efficient asynchronous operations with concurrent tool execution
+- **conversation history**: maintain chat context across interactions with persistent memory
+- **type safety**: comprehensive type hints throughout the codebase using modern python typing
+- **security**: input validation, safe code execution, and error handling
 
-## 🚀 Quick Start
+## quick start
 
-### 1. Prerequisites
+### 1. prerequisites
 
-- Python 3.11 or higher
-- OpenAI API key ([Get one here](https://platform.openai.com/api-keys))
+- python 3.11 or higher
+- openai api key ([get one here](https://platform.openai.com/api-keys))
 - [uv](https://docs.astral.sh/uv/) for package management
 
-### 2. Installation
+### 2. installation
 
 ```bash
-# Clone the repository
+# clone the repository
 git clone https://github.com/chi-n-nguyen/tool-calling-chatbot.git
 cd tool-calling-chatbot
 
-# Install dependencies using uv
+# install dependencies using uv
 uv sync
 
-# Install the package in development mode
+# install the package in development mode
 uv pip install -e .
 ```
 
-### 3. Configuration
+### 3. configuration
 
-Create a `.env` file in the project root:
+create a `.env` file in the project root:
 
 ```bash
-# Copy the example environment file
+# copy the example environment file
 cp .env.example .env
 
-# Edit the .env file with your API key
+# edit the .env file with your api key
 OPENAI_API_KEY=your_openai_api_key_here
 ```
 
-### 4. Get Your OpenAI API Key
+### 4. get your openai api key
 
-1. Visit [OpenAI's API Keys page](https://platform.openai.com/api-keys)
-2. Sign up or log in to your account
-3. Click "Create new secret key"
-4. Copy the key and paste it into your `.env` file
-5. **Important**: Add some credits to your OpenAI account to use the API
+1. visit [openai's api keys page](https://platform.openai.com/api-keys)
+2. sign up or log in to your account
+3. click "create new secret key"
+4. copy the key and paste it into your `.env` file
+5. **important**: add some credits to your openai account to use the api
 
-### 5. Run the Chatbot
+### 5. run the chatbot
 
 ```bash
-# Method 1: Using the installed command
+# method 1: using the installed command
 chatbot
 
-# Method 2: Using Python directly  
+# method 2: using python directly  
 python -m tool_calling_chatbot.main
 
-# Method 3: For development
+# method 3: for development
 uv run python -m tool_calling_chatbot.main
 ```
 
-## 🎯 Usage Examples
+## usage examples
 
-### Calculator Tool
+### calculator tool
 ```
-You: Calculate 2 + 3 * 4
-🤖 Assistant: I'll calculate that for you.
-🔧 Tool Call: calculator(expression=2 + 3 * 4)
-✅ Result: {'expression': '2 + 3 * 4', 'result': 14, 'formatted': '2 + 3 * 4 = 14'}
-The result is 14.
-```
-
-### File Reader Tool
-```
-You: Read the content of README.md
-🤖 Assistant: I'll read the README.md file for you.
-🔧 Tool Call: file_reader(file_path=README.md)
-✅ Result: {'file_path': '/path/to/README.md', 'content': '# Project Title...', 'lines_read': 45, 'truncated': False}
-Here's the content of README.md: [content shown]
+you: calculate 2 + 3 * 4
+assistant: i'll calculate that for you.
+tool call: calculator(expression=2 + 3 * 4)
+result: {'expression': '2 + 3 * 4', 'result': 14, 'formatted': '2 + 3 * 4 = 14'}
+the result is 14.
 ```
 
-### Random Joke Tool
+### vintage outfit generator
 ```
-You: Tell me a programming joke
-🤖 Assistant: Here's a programming joke for you!
-🔧 Tool Call: random_joke(category=programming)
-✅ Result: {'setup': 'Why do programmers prefer dark mode?', 'punchline': 'Because light attracts bugs!', 'category': 'programming'}
-Why do programmers prefer dark mode? Because light attracts bugs! 😄
+you: generate a vintage melbourne outfit for a date in autumn
+assistant: i'll create a vintage melbourne outfit for your autumn date.
+tool call: vintage_outfit_generator(occasion=date, season=autumn)
+result: vintage outfit with curated melbourne shopping spots
+here's a perfect vintage melbourne outfit for your autumn date...
 ```
 
-## 📋 Available Commands
+### melbourne food recommender
+```
+you: recommend a good restaurant for students on a budget
+assistant: i'll find a great budget-friendly restaurant with student options.
+tool call: melbourne_food_recommender(budget=cheap, student=true)
+result: student-friendly restaurant recommendation with discount info
+i recommend checking out these student-friendly spots in melbourne...
+```
 
-| Command | Description |
+## available commands
+
+| command | description |
 |---------|-------------|
-| `/help` | Show help message |
-| `/tools` | List available tools |
-| `/history` | Show conversation history |
-| `/clear` | Clear conversation history |
-| `/exit` or `/quit` | Exit the chatbot |
+| `/help` | show help message |
+| `/tools` | list available tools |
+| `/history` | show conversation history |
+| `/clear` | clear conversation history |
+| `/exit` or `/quit` | exit the chatbot |
 
-## 🔧 Available Tools
+## available tools
 
-### Calculator
-- **Function**: `calculator`
-- **Description**: Evaluates mathematical expressions safely
-- **Parameters**: `expression` (string) - Mathematical expression to evaluate
-- **Example**: `"2 + 3 * 4"`, `"pow(2, 3)"`, `"abs(-5)"`
+### calculator
+- **function**: `calculator`
+- **description**: evaluates mathematical expressions safely
+- **parameters**: `expression` (string) - mathematical expression to evaluate
+- **example**: `"2 + 3 * 4"`, `"pow(2, 3)"`, `"abs(-5)"`
 
-### File Reader
-- **Function**: `file_reader`
-- **Description**: Reads text files safely with size and type restrictions
-- **Parameters**: 
-  - `file_path` (string, required) - Path to the file
-  - `max_lines` (integer, optional) - Maximum lines to read (default: 100)
-- **Supported formats**: `.txt`, `.md`, `.py`, `.js`, `.html`, `.css`, `.json`, `.yaml`, `.yml`, `.xml`
+### vintage outfit generator
+- **function**: `vintage_outfit_generator`
+- **description**: generates vintage melbourne core outfit recommendations
+- **parameters**: 
+  - `occasion` (string, optional) - occasion for the outfit
+  - `season` (string, optional) - melbourne season for appropriate layering
+- **supported occasions**: casual, concert, date, uni, work, weekend
+- **supported seasons**: summer, autumn, winter, spring
 
-### Random Joke
-- **Function**: `random_joke`
-- **Description**: Provides random jokes for entertainment
-- **Parameters**: `category` (string, optional) - Category of joke ("programming", "general", "any")
+### melbourne food recommender
+- **function**: `melbourne_food_recommender`
+- **description**: recommends melbourne restaurants based on budget and preferences
+- **parameters**: 
+  - `budget` (string, optional) - budget preference for dining
+  - `cuisine` (string, optional) - preferred cuisine type
+  - `student` (boolean, optional) - whether user is a student seeking discounts
 
-## 🏗️ Project Structure
+## project structure
 
 ```
 tool-calling-chatbot/
 ├── src/
 │   └── tool_calling_chatbot/
 │       ├── __init__.py
-│       ├── main.py              # Main entry point
+│       ├── main.py              # main entry point
 │       ├── core/
 │       │   ├── __init__.py
-│       │   ├── config.py        # Configuration management
-│       │   ├── base.py          # Base classes and registry
-│       │   ├── openai_client.py # OpenAI integration
-│       │   └── cli.py           # CLI interface
+│       │   ├── config.py        # configuration management
+│       │   ├── base.py          # base classes and registry
+│       │   ├── openai_client.py # openai integration
+│       │   └── cli.py           # cli interface
 │       └── tools/
 │           ├── __init__.py
-│           ├── calculator.py    # Calculator tool
-│           ├── file_reader.py   # File reader tool
-│           └── random_joke.py   # Random joke tool
-├── pyproject.toml              # Project configuration
-├── .env.example               # Environment template
-├── .gitignore                # Git ignore rules
-└── README.md                 # This file
+│           ├── calculator.py    # calculator tool
+│           ├── vintage_outfit_generator.py # outfit generator
+│           └── melbourne_food_recommender.py # food recommender
+├── pyproject.toml              # project configuration
+├── .env.example               # environment template
+├── .gitignore                # git ignore rules
+└── README.md                 # this file
 ```
 
-## 🛠️ Development Guide
+## development guide
 
-### Adding New Tools
+### adding new tools
 
-1. **Create a new tool file** in `src/tool_calling_chatbot/tools/`:
+1. **create a new tool file** in `src/tool_calling_chatbot/tools/`:
 
 ```python
 from typing import Any, List
@@ -196,7 +203,7 @@ class YourTool(BaseTool):
     
     @property
     def description(self) -> str:
-        return "Description of what your tool does"
+        return "description of what your tool does"
     
     @property
     def parameters(self) -> List[ToolParameter]:
@@ -204,20 +211,20 @@ class YourTool(BaseTool):
             ToolParameter(
                 name="param_name",
                 type="string",
-                description="Parameter description",
+                description="parameter description",
                 required=True
             )
         ]
     
     async def execute(self, param_name: str) -> ToolResult:
-        # Your tool logic here
+        # your tool logic here
         return ToolResult(
             success=True,
             data={"result": "your_result"}
         )
 ```
 
-2. **Register the tool** in `src/tool_calling_chatbot/tools/__init__.py`:
+2. **register the tool** in `src/tool_calling_chatbot/tools/__init__.py`:
 
 ```python
 from .your_tool import YourTool
@@ -226,78 +233,73 @@ your_tool = YourTool()
 registry.register(your_tool)
 ```
 
-### Environment Variables
+### environment variables
 
-| Variable | Description | Required | Default |
+| variable | description | required | default |
 |----------|-------------|----------|---------|
-| `OPENAI_API_KEY` | OpenAI API key | Yes | - |
-| `OPENAI_MODEL` | OpenAI model to use | No | `gpt-4o-mini` |
-| `OPENAI_TEMPERATURE` | Response randomness (0.0-2.0) | No | `0.7` |
-| `OPENAI_MAX_TOKENS` | Maximum tokens per response | No | `1000` |
+| `OPENAI_API_KEY` | openai api key | yes | - |
+| `OPENAI_MODEL` | openai model to use | no | `gpt-4o-mini` |
+| `OPENAI_TEMPERATURE` | response randomness (0.0-2.0) | no | `0.7` |
+| `OPENAI_MAX_TOKENS` | maximum tokens per response | no | `1000` |
 
-### Running Tests
+### running tests
 
 ```bash
-# Run with pytest (when tests are added)
+# run with pytest (when tests are added)
 uv run pytest
 
-# Run type checking
+# run type checking
 uv run mypy src/
 ```
 
-## 🔒 Security Features
+## security features
 
-- **Safe Expression Evaluation**: Calculator uses AST parsing to prevent code injection
-- **File Access Controls**: File reader has size limits and extension restrictions
-- **Input Validation**: All tool parameters are validated before execution
-- **Error Handling**: Comprehensive error handling prevents crashes
+- **safe expression evaluation**: calculator uses ast parsing to prevent code injection
+- **input validation**: all tool parameters are validated before execution
+- **error handling**: comprehensive error handling prevents crashes
 
-## 🐛 Troubleshooting
+## troubleshooting
 
-### Common Issues
+### common issues
 
-1. **"OpenAI API key not found"**
-   - Check that your `.env` file exists and contains `OPENAI_API_KEY`
-   - Ensure the API key is valid and has credits
+1. **"openai api key not found"**
+   - check that your `.env` file exists and contains `OPENAI_API_KEY`
+   - ensure the api key is valid and has credits
 
-2. **"Tool not found" errors**
-   - Verify all tools are properly registered in `tools/__init__.py`
-   - Check for import errors in tool modules
+2. **"tool not found" errors**
+   - verify all tools are properly registered in `tools/__init__.py`
+   - check for import errors in tool modules
 
-3. **"File not found" when reading files**
-   - Use absolute paths or ensure files exist relative to current directory
-   - Check file permissions and supported extensions
+### debug mode
 
-### Debug Mode
-
-Set environment variables for debugging:
+set environment variables for debugging:
 
 ```bash
 export PYTHONPATH=src
 export OPENAI_LOG_LEVEL=debug
 ```
 
-## 📚 Learning Resources
+## learning resources
 
-- [OpenAI Function Calling Documentation](https://platform.openai.com/docs/guides/function-calling)
-- [Rich Terminal Library](https://rich.readthedocs.io/)
-- [Pydantic for Data Validation](https://pydantic-docs.helpmanual.io/)
-- [Modern Python Typing](https://docs.python.org/3/library/typing.html)
+- [openai function calling documentation](https://platform.openai.com/docs/guides/function-calling)
+- [rich terminal library](https://rich.readthedocs.io/)
+- [pydantic for data validation](https://pydantic-docs.helpmanual.io/)
+- [modern python typing](https://docs.python.org/3/library/typing.html)
 
-## 🤝 Contributing
+## contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Add your changes with proper type hints
-4. Test your changes
-5. Submit a pull request
+1. fork the repository
+2. create a feature branch
+3. add your changes with proper type hints
+4. test your changes
+5. submit a pull request
 
-## 📄 License
+## license
 
-This project is licensed under the MIT License.
+this project is licensed under the mit license.
 
-## 🙏 Acknowledgments
+## acknowledgments
 
-- OpenAI for the GPT-4o-mini model
-- Rich library for beautiful terminal output
-- Python community for excellent async support
+- openai for the gpt-4o-mini model
+- rich library for beautiful terminal output
+- python community for excellent async support

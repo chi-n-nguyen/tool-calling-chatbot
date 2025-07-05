@@ -1,17 +1,17 @@
-"""Tools for the chatbot function calling system."""
+"""tools for the chatbot function calling system."""
 
 from .calculator import Calculator
-from .file_reader import FileReader
-from .random_joke import RandomJoke
+from .vintage_outfit_generator import VintageOutfitGenerator
+from .melbourne_food_recommender import MelbourneFoodRecommender
 from ..core.base import registry
 
-# Register all tools
+# register all tools
 calculator = Calculator()
-file_reader = FileReader()
-random_joke = RandomJoke()
+vintage_outfit_generator = VintageOutfitGenerator()
+melbourne_food_recommender = MelbourneFoodRecommender()
 
 registry.register(calculator)
-registry.register(file_reader)
-registry.register(random_joke)
+registry.register(vintage_outfit_generator)
+registry.register(melbourne_food_recommender)
 
-__all__ = ["Calculator", "FileReader", "RandomJoke", "registry"] 
+__all__ = ["Calculator", "VintageOutfitGenerator", "MelbourneFoodRecommender", "registry"] 
